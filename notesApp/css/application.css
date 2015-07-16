@@ -1,0 +1,20 @@
+/* line 60, ../stylesheets/application.scss */
+.closeBtn {
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  right: 0;
+}
+
+/* line 66, ../stylesheets/application.scss */
+.editBtn {
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  left: 10px;
+}
+
+/* line 72, ../stylesheets/application.scss */
+.todoTitle {
+  margin-left: 15px;
+}

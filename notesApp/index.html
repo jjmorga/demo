@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Local Storage Todo List</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+	<link href="css/application.css" rel="stylesheet">
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/angular-local-storage/angular-local-storage.min.js"></script>
+    <script src="js/app.js"></script>
+	<!-- Needed for Cordova/PhoneGap (will be a 404 during development) -->
+    <script src="cordova.js"></script>
+  </head>
+<body ng-app="todo"  ng-controller="TodoCtrl">
+  <ion-side-menus>
+ <!-- Center content -->
+  <ion-side-menu-content>
+    <ion-header-bar class="bar-dark">
+      <h1 class="title fa fa-paper-plane"> Notes</h1>
+      <!-- New Task button-->
+      <button class="button button-icon" ng-click="newTask()">
+        <i class="icon ion-compose"></i>
+      </button>
+    </ion-header-bar>
+    <ion-content>
+      <!-- our list and list items -->
+      <ion-list>
+        <ion-item data-ng-repeat="todo in saved track by $index">
+          <span class="todoTitle">{{todo}}</span><childelem ng-click=editTask(todo)><span class="editBtn fa fa-pencil-square-o"></span></childelem><childelem ng-click=deleteRow(todo)><span class="closeBtn fa fa-times"></span></childelem>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu-content>
+  </ion-side-menus>
+  <script id="new-task.html" type="text/ng-template">
+    <div class="modal">
+      <!-- Modal header bar -->
+      <ion-header-bar class="bar-secondary">
+        <h1 class="title">{{modalTitle}}</h1>
+        <button class="button button-clear button-positive" ng-click="closeNewTask()">Cancel</button>
+      </ion-header-bar>
+      <!-- Modal content area -->
+      <ion-content>
+        <form ng-submit="createTask(task)">
+          <div class="list">
+            <label class="item item-input">
+              <input type="text" placeholder="{{modalPlaceholder}}" ng-model="task.title">
+            </label>
+          </div>
+          <div class="padding">
+            <button type="submit" class="button button-block button-positive">Create Task</button>
+          </div>
+        </form>
+      </ion-content>
+    </div>
+  </script>
+</body>
+</html>
